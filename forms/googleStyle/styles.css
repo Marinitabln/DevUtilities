@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background-image: linear-gradient(#a3c6fd, #b6dbf9);
+    height: 100vh;
+}
+
+input {
+    font: inherit
+}
+
+.form {
+    margin: 40px auto;
+    width: min(90%, 300px);
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.3);
+    padding: 3rem 1.5rem;
+}
+
+.form_title {
+    font-size: 2rem;
+}
+
+.form_subtitle {
+    color: #5f6368;
+    margin-top: 0.7rem;
+}
+
+.form_inputs {
+    margin: 2rem 0 1.5rem;
+    display: grid;
+    gap: 1.5rem;
+    color: #6b6b6b;
+}
+
+.form_label {
+    width: 100%;
+    display: grid;
+    grid-template-areas: "input";
+}
+
+.form_input {
+    grid-area: input;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #d7d0d0;
+    padding: .7rem 1rem;
+    color: #6b6b6b
+}
+
+.form_text {
+    grid-area: input;
+    z-index: 100;
+    width: max-content;
+    margin-left: 1rem;
+    padding: 0 .5rem;
+    display: flex;
+    align-items: center;
+    transform-origin: left center;
+    transition: transform .3s;
+
+}
+
+/* Código extenso*//*
+.form_input:focus+.form_text,
+.form_input:not(:placeholder-shown)+.form_text {
+    /*cual el input esté activo o cuando ya no se muestra el placeholder, porque se escribió algo, su hermano adyacente se modifica*//*
+    background-color: #fff;
+    transform: translateY(-50%) scale(.7);
+    color: #6b6b6b;
+}*/
+
+/* Código simplificado*/
+.form_input:is(:focus, :not(:placeholder-shown))+.form_text {
+    background-color: #fff;
+    transform: translateY(-50%) scale(.7);
+    color: #6b6b6b;
+}
+
+.form_button {
+    width: min(120px);
+    padding: .7rem 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #1a73e8;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color .3s;
+}
