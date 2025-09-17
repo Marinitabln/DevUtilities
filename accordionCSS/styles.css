@@ -1,0 +1,107 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-headings: #0bae8dff;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    height: 100vh;
+    background-color: rgb(238, 238, 238);
+
+}
+
+.title{
+    color: var(--color-headings);
+    text-align: center;
+    margin: 4rem 0;
+    padding: 0 20px;
+    font-size: clamp(26px, 5vw, 40px);/*font siza responsivo, que adapta el tamaña según el tamaño del viewport*/
+}
+
+.faqs{
+    background-color: #fff;
+    width: min(90%, 750px);
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 0 6px -2px #00000086;
+
+}
+
+.faqs_content{
+    width: 80%;
+    margin: 0 auto; 
+    padding: 30px 0;
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+}
+
+.faqs_element{
+    --color-titulo: var(--color-headings);
+    --image-question: url("assets/plus-icon.svg");
+    --faqs-rows: 0fr;
+
+    border-bottom: 1px solid #0bae8dff;
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: max-content var(--faqs-rows); /*max-content toma el tamaño del contenido y 0fr el tamaño restante*/
+     transition: grid-template-rows 0.3s;
+}
+
+.faqs_element:has(input:checked){
+    --faqs-rows: 1fr;
+    --color-titulo: #6b66b6;
+    --image-question: url("assets/minus-icon.svg");
+}
+
+.faqs_element:last-of-type{/*para sacarle el bordel al último elem*/
+    border-bottom: 0;
+}
+
+.faqs_label{
+    color: var(--color-titulo);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: clamp(16px, 4vw, 20px);
+    cursor: pointer;
+    padding-bottom: 1rem;
+}
+
+.label_text{
+    width: 90%;
+    /*flex: 1; /*para que el texto ocupe todo el espacio disponible*/
+}
+
+[id^="question"]{/*va a seleccionar a todos los id que comiencen con question*/
+    display: none;
+} 
+
+.faqs_icon{
+    display: block;
+    width: 20px;
+    height:20px;
+    background-size: cover;
+    background-image: var(--image-question);/*refenciando a la variable de la custom properties*/
+    transition: background-image 0.3s;
+}
+
+.faqs_answer{
+    color: #6b6b6b;
+    padding-left: 2rem;
+    overflow: hidden; /*para que no se vea el contenido que se sale del contenedor*/
+}
+
+.faqs_answer::after, .faqs_answer::before{
+    content: "";
+    display: block;
+    height: 1.5rem;
+}
+
