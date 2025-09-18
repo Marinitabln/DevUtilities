@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(135deg, #7357FF 0%, #C751FF 100%);
+    font-family: "Montserrat", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown_checkbox {
+    display: none;
+}
+
+.dropdown_toggle, .dropdown_menu{
+    border-radius: 14px;
+}
+
+.dropdown_toggle{
+    display: inline-flex;
+    align-items: center;    
+    justify-content: space-between;
+    padding: 1.2rem 1.8rem;
+    background-color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown_chevron{
+    display: inline-block;
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown_menu{
+    position: absolute;
+    list-style: none;
+    pointer-events: none;
+    top: 10%;
+    left: 0;
+
+    min-width: 200px;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(0,0,0,0.5);
+    background-color: #fff;
+
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(45px) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* .dropdown:has(.dropdown_checkbox:checked) .dropdown_menu{
+    opacity: 1;
+    pointer-events: auto;
+   transform: translateY(0) scale(1);
+}
+
+.dropdown:has(.dropdown_checkbox:checked) .dropdown_chevron{
+    transform: rotate(180deg);
+}
+ */
+/* Using nested syntax for better readability */
+.dropdown:has(.dropdown_checkbox:checked){
+    .dropdown_menu{
+        opacity: 1;
+        pointer-events: auto;
+       transform: translateY(10) scale(1);
+    }
+    .dropdown_chevron{
+        transform: rotate(180deg);
+    }
+}
+
+.dropdown_item{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #424242;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown_item:hover{
+    background-color: rgba(0,0,0,0.3);
+    color: #fff;   
+}
+
+.dropdown_icon{
+    display: inline-block;
+    margin-right: 0.75rem;
+    font-size: 1.2rem;      
+}
