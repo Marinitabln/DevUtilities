@@ -58,12 +58,12 @@ body {
 
 
 .faq__question {
-    display: flex;
+    display: flex; /*hace que se salga el tringulito default*/
     align-items: center;
     cursor: pointer;
 }
 
-.faq__question::after {
+.faq__question::after {/*Asigna con CSS el ícono, creando pseudoelemento al final, con contenido vacío*/
     content: "";
     margin-left: auto;
     width: 30px;
